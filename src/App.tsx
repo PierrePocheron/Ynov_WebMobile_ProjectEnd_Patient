@@ -2,6 +2,12 @@ import { useState } from 'react'
 import './App.css'
 import LoginPage from './components/LoginPage';
 import DashboardPatientPage from './components/DashboardPatientPage';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+import RegisterPage from './components/RegisterPage';
 
 
 function App() {
@@ -10,8 +16,13 @@ function App() {
 
   return (
     <div className="App">
-      {!isLogin && <LoginPage updateLogin={setIsLogin}/>}
-      {isLogin && <DashboardPatientPage/>}
+      <Router>
+        <Routes>
+          <Route path="/register" element={<RegisterPage updateLogin={setIsLogin}/>} />
+          <Route path="/login" element={<LoginPage updateLogin={setIsLogin}/>} />
+          <Route path="/dashboard" element={<DashboardPatientPage />} />
+        </Routes>
+      </Router>
     </div>
   )
 }
