@@ -7,12 +7,12 @@ import { getFirestore } from 'firebase/firestore';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCZbAg8OA4ORhqQ6mxzdLkz6xg6eeaesec",
-  authDomain: "webmobile-projectend.firebaseapp.com",
-  projectId: "webmobile-projectend",
-  storageBucket: "webmobile-projectend.appspot.com",
-  messagingSenderId: "991829801579",
-  appId: "1:991829801579:web:e90025fcdb436a2319cf2e"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 // Initialize Firebase
