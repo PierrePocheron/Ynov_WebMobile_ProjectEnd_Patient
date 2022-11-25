@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
+import './index.scss'
 import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
 
