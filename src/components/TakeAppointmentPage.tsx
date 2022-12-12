@@ -3,16 +3,15 @@ import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../main';
+import { uid } from 'uid';
 
 
 const TakeAppointmentPage = () => {
 
   const navigate = useNavigate();
+  const currentPatient = auth.currentUser
   const [appointmentDate, setAppointmentDate] = useState<string>("");
-  const patient = auth.currentUser
   const [listProvider, setListProvider] = useState<any[]>();
-  // Todo : update
-  const providerSelected = auth.currentUser
 
 
   useEffect(() => {
@@ -39,11 +38,11 @@ const TakeAppointmentPage = () => {
 
 
   const handleClickTakeAppointment = async (event:any, providerUid:string) => {
-    if (patient){
+    if (currentPatient){
       const appointmentCreateDoc = await addDoc(collection(db, 'appointment'), {
-        //uid: uid,
+        uid: uid(28),
 
-        patient: patient.uid,
+        patient: currentPatient.uid,
         provider: providerUid,
 
         date: appointmentDate,
