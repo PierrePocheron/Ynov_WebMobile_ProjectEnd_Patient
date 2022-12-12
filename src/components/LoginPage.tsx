@@ -22,7 +22,7 @@ const LoginPage = (props: PropsLoginPage) => {
 
     if(user) {
       updateLogin(true);
-      navigate("/dashboard");
+      navigate("/take-appointment");
     }
   }
 

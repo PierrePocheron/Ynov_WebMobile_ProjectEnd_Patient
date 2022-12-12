@@ -10,12 +10,14 @@ const RegisterPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [address, setAddress] = useState<string>("");
+  const [firstname, setFirstname] = useState<string>("");
+  const [lastname, setLastname] = useState<string>("");
   const navigate = useNavigate();
 
 
   const handleClickRegister = async () => {
     const userCreate = await createUserWithEmailAndPassword(auth, email, password)
-      .catch(function(error) {
+      .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
 
@@ -31,9 +33,11 @@ const RegisterPage = () => {
       const userCreateDoc = await addDoc(collection(db, 'users'), {
         uid: userCreate.user.uid,
         type: "PATIENT",
-        address: address
+        address: address,
+        firstname: firstname,
+        lastname: lastname,
       })
-      .catch(function(error) {
+      .catch((error) => {
         var errorMessage = error.message;
         alert(errorMessage)
         console.log(error);
@@ -43,7 +47,7 @@ const RegisterPage = () => {
         navigate("/login");
       }
     }
-}
+  }
 
   const handleChangeEmail = (event: any) => {
     setEmail(event.currentTarget.value)
@@ -55,6 +59,14 @@ const RegisterPage = () => {
 
   const handleChangeAddress = (event: any) => {
     setAddress(event.currentTarget.value)
+  }
+
+  const handleChangeFirstname = (event: any) => {
+    setFirstname(event.currentTarget.value)
+  }
+
+  const handleChangeLastname = (event: any) => {
+    setLastname(event.currentTarget.value)
   }
 
   const handleClickButtonLogin = (event: any) => {
@@ -106,6 +118,30 @@ const RegisterPage = () => {
               value={address}
               onChange={handleChangeAddress}
               placeholder="Address">
+              </input>
+            </div>
+
+            <div className="input-control">
+              <label htmlFor="firstname" hidden>Firstname</label>
+              <input type="firstname"
+              id="firstname"
+              name="firstname"
+              className="input-field"
+              value={firstname}
+              onChange={handleChangeFirstname}
+              placeholder="Firstname">
+              </input>
+            </div>
+
+            <div className="input-control">
+              <label htmlFor="lastname" hidden>Lastname</label>
+              <input type="lastname"
+              id="lastname"
+              name="lastname"
+              className="input-field"
+              value={lastname}
+              onChange={handleChangeLastname}
+              placeholder="Lastname">
               </input>
             </div>
 

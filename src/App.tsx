@@ -8,6 +8,8 @@ import {
   Route
 } from "react-router-dom";
 import RegisterPage from './components/RegisterPage';
+import TakeAppointmentPage from './components/TakeAppointmentPage';
+import MyAppointmentPage from './components/MyAppointmentPage';
 
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage updateLogin={setIsLogin} />} />
           <Route path="/dashboard" element={<DashboardPatientPage />} />
+          <Route path="/take-appointment" element={<TakeAppointmentPage />} />
+          <Route path="/my-appointment" element={<MyAppointmentPage />} />
         </Routes>
       </Router>
     </div>

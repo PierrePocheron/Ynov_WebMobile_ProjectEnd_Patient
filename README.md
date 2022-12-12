@@ -18,9 +18,12 @@ yarn dev
 - Setup environnement variables for Netflify
 - Form authentication
 - Form register
+- Setup rooter
+- Take appointment (display list of providers & choose date)
 
 Todo :
-- Setup rooter
+- Add uid to appointment
+- Manage my appointements
 
 ## 🏛️ `Technology used`
 - Web App
