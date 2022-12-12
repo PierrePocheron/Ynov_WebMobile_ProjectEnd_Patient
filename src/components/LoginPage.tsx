@@ -1,5 +1,7 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 interface PropsLoginPage {
   updateLogin: (isLogin: boolean) => void;
@@ -9,6 +11,7 @@ const LoginPage = (props: PropsLoginPage) => {
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const navigate = useNavigate();
 
   const { updateLogin } = props;
 
@@ -16,10 +19,10 @@ const LoginPage = (props: PropsLoginPage) => {
     //fetch for api firebase auth
     const auth = getAuth();
     const { user } = await signInWithEmailAndPassword(auth, email, password);
-    console.log(user);
+
     if(user) {
       updateLogin(true);
-      // Todo : add user & role in Firestore
+      navigate("/dashboard");
     }
   }
 
@@ -31,13 +34,21 @@ const LoginPage = (props: PropsLoginPage) => {
     setPassword(event.currentTarget.value)
   }
 
+  const handleClickButtonRegister = (event: any) => {
+    navigate("/register");
+  }
+
   return (
     <main className="main">
       <div className='container'>
-        <section className="wrapper-login">
+        <section className="wrapper">
           <div className="form">
             <h1 className="text text-large">Patient ? Sign In 👀</h1>
-
+            <p className="text text-normal">New user ?
+              <span>
+                <a onClick={handleClickButtonRegister} style={{cursor:'pointer'}} className="text text-links"> Register</a>
+              </span>
+            </p>
             <div className="input-control">
               <label htmlFor="username" hidden>Username</label>
               <input

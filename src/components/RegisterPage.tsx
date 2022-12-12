@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { collection, addDoc } from 'firebase/firestore';
 import { useState } from 'react';
 import { auth, db } from '../main';
+import { useNavigate } from "react-router-dom";
 
 
 const RegisterPage = () => {
@@ -9,6 +10,8 @@ const RegisterPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [address, setAddress] = useState<string>("");
+  const navigate = useNavigate();
+
 
   const handleClickRegister = async () => {
     const userCreate = await createUserWithEmailAndPassword(auth, email, password)
@@ -25,13 +28,21 @@ const RegisterPage = () => {
       })
 
     if (userCreate){
-      const userCreateDoc = addDoc(collection(db, 'users'), {
+      const userCreateDoc = await addDoc(collection(db, 'users'), {
         uid: userCreate.user.uid,
         type: "PATIENT",
         address: address
       })
+      .catch(function(error) {
+        var errorMessage = error.message;
+        alert(errorMessage)
+        console.log(error);
+      })
+
+      if (userCreateDoc) {
+        navigate("/login");
+      }
     }
-    // if(userCreateDoc) Redirect to /login
 }
 
   const handleChangeEmail = (event: any) => {
@@ -46,15 +57,19 @@ const RegisterPage = () => {
     setAddress(event.currentTarget.value)
   }
 
+  const handleClickButtonLogin = (event: any) => {
+    navigate("/login");
+  }
+
   return (
     <main className="main">
       <div className='container'>
-        <section className="wrapper-Register">
+        <section className="wrapper">
           <div className="form">
             <h1 className="text text-large">Patient without account ? Register 👀</h1>
             <p className="text text-normal">You have account ?
               <span>
-                <a href="login" className="text text-links">Login</a>
+                <a onClick={handleClickButtonLogin} style={{cursor:'pointer'}} className="text text-links">Login</a>
               </span>
             </p>
             <div className="input-control">

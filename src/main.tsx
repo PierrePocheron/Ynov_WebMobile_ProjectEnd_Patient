@@ -5,6 +5,7 @@ import './index.css'
 import './index.scss'
 import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth'
 
 
 const firebaseConfig = {
@@ -22,6 +23,9 @@ export const app = initializeApp(firebaseConfig);
 
 // Initialize Firestore
 export const db = getFirestore(app);
+
+// Initialize Firestore - Auth
+export const auth = getAuth();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
