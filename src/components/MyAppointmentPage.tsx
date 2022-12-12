@@ -65,6 +65,20 @@ const MyAppointmentPage = () => {
               <h4><b>{appointment.provider}</b></h4>
               <h4><b>{appointment.patient}</b></h4>
 
+              <form onSubmit={e => {
+                e.preventDefault();
+                atcb_action({
+                  name: 'Appointment - Doctolike with :' + appointment.provider,
+                  startDate: appointment.date,
+                  endDate: appointment.date,
+                  options: ['Apple', 'Google', 'iCal', 'Microsoft365', 'Outlook.com', 'Yahoo'],
+                  timeZone: "Europe/Berlin",
+                  iCalFileName: "Reminder-Event",
+                });
+              }}>
+                <input type="submit" value="Add to calendar" className="input-warning" />
+              </form>
+
               <button className="input-danger" onClick={(event:any) => handleClickCancelAppointment(event, appointment.uid)}>
                   Cancel
               </button>

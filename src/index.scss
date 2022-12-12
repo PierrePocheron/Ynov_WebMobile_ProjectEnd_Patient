@@ -3,6 +3,7 @@
   --color-light: #f1f5f9;
   --color-black: #121212;
   --color-night: #001632;
+  --color-yellow: #f9c008;
   --color-red: #f44336;
   --color-bred: #7b2822;
   --color-blue: #1a73e8;
@@ -129,6 +130,46 @@ code {
   border-radius: 2rem;
   color: var(--color-white);
   background: var(--color-blue);
+  -webkit-box-shadow: var(--shadow-medium);
+          box-shadow: var(--shadow-medium);
+  text-transform: capitalize;
+  text-rendering: optimizeLegibility;
+}
+
+.input-danger {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: inherit;
+  cursor: pointer;
+  min-width: 40%;
+  height: auto;
+  padding: 0.65rem 1.25rem;
+  border: none;
+  outline: none;
+  border-radius: 2rem;
+  color: var(--color-white);
+  background: var(--color-red);
+  -webkit-box-shadow: var(--shadow-medium);
+          box-shadow: var(--shadow-medium);
+  text-transform: capitalize;
+  text-rendering: optimizeLegibility;
+}
+
+.input-warning {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: inherit;
+  cursor: pointer;
+  min-width: 40%;
+  height: auto;
+  padding: 0.65rem 1.25rem;
+  border: none;
+  outline: none;
+  border-radius: 2rem;
+  color: var(--color-black);
+  background: var(--color-yellow);
   -webkit-box-shadow: var(--shadow-medium);
           box-shadow: var(--shadow-medium);
   text-transform: capitalize;
