@@ -44,50 +44,57 @@ const MyAppointmentPage = () => {
     // Todo module
   }
 
+  const handleClickButtonTakeAppointment = (event: any) => {
+    navigate("/take-appointment");
+  }
+
   return (
   <main className="main">
     <div className=''>
       <section className="wrapper">
         <div className="form">
           <h1 className="text text-large">My appointment 🧑🏽‍🦼</h1>
+          <br/><br/>
+          <span>
+            <a onClick={handleClickButtonTakeAppointment} style={{cursor:'pointer'}} className="text text-links text-left">Take appointment</a>
+          </span>
         </div>
       </section>
     </div>
 
-    <div className=''>
-      <div style={{display: 'inline-flex'}}>
-        {listAppointment?.map(appointment =>
-          <section className="wrapper" style={{margin: '7px'}}>
-            <div className="form">
-            <h5><i>Provider 👨🏽‍⚕️</i></h5>
-              <h5><i>{appointment.date}</i></h5>
-              <h5><i><b>{appointment.uid}</b></i></h5>
-              <h4><b>{appointment.provider}</b></h4>
-              <h4><b>{appointment.patient}</b></h4>
+    <section className="grid-container">
+      {listAppointment?.map(appointment =>
+        <div className="wrapper">
+          <div className="form">
+          <h5 className="text text-medium"><i>Provider 👨🏽‍⚕️</i></h5>
+          <span className="text-left">
+            Date : <i>{appointment.date}</i>
+            <br/>
+            With : {appointment.provider}
+            <br/><br/>
+          </span>
 
-              <form onSubmit={e => {
-                e.preventDefault();
-                atcb_action({
-                  name: 'Appointment - Doctolike with :' + appointment.provider,
-                  startDate: appointment.date,
-                  endDate: appointment.date,
-                  options: ['Apple', 'Google', 'iCal', 'Microsoft365', 'Outlook.com', 'Yahoo'],
-                  timeZone: "Europe/Berlin",
-                  iCalFileName: "Reminder-Event",
-                });
-              }}>
-                <input type="submit" value="Add to calendar" className="input-warning" />
-              </form>
+          <form onSubmit={e => {
+            e.preventDefault();
+            atcb_action({
+              name: 'Appointment - Doctolike with :' + appointment.provider,
+              startDate: appointment.date,
+              endDate: appointment.date,
+              options: ['Apple', 'Google', 'iCal', 'Microsoft365', 'Outlook.com', 'Yahoo'],
+              timeZone: "Europe/Berlin",
+              iCalFileName: "Reminder-Event",
+            });
+          }}>
+            <input type="submit" value="Add to calendar" className="input-warning" />
+          </form>
 
-              <button className="input-danger" onClick={(event:any) => handleClickCancelAppointment(event, appointment.uid)}>
-                  Cancel
-              </button>
-            </div>
-          </section>
-          )}
+          <button className="input-danger" onClick={(event:any) => handleClickCancelAppointment(event, appointment.uid)}>
+              Cancel
+          </button>
+        </div>
       </div>
-    </div>
-
+      )}
+    </section>
   </main>
   )
 

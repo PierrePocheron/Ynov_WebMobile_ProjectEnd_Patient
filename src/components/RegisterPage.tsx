@@ -78,10 +78,11 @@ const RegisterPage = () => {
       <div className='container'>
         <section className="wrapper">
           <div className="form">
-            <h1 className="text text-large">Patient without account ? Register 👀</h1>
+            <h1 className="text text-large">Patient without account ?<br/><br/> Register 👀</h1>
+
             <p className="text text-normal">You have account ?
               <span>
-                <a onClick={handleClickButtonLogin} style={{cursor:'pointer'}} className="text text-links">Login</a>
+                <a onClick={handleClickButtonLogin} style={{cursor:'pointer'}} className="text text-links"> Login</a>
               </span>
             </p>
             <div className="input-control">

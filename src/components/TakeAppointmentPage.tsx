@@ -39,7 +39,7 @@ const TakeAppointmentPage = () => {
 
   const handleClickTakeAppointment = async (event:any, providerUid:string) => {
     if (currentPatient){
-      const appointmentCreateDoc = await addDoc(collection(db, 'appointment'), {
+      const appointmentCreateDoc = await addDoc(collection(db, 'appointments'), {
         uid: uid(28),
 
         patient: currentPatient.uid,
@@ -65,12 +65,20 @@ const TakeAppointmentPage = () => {
     setAppointmentDate(event.currentTarget.value)
   }
 
+  const handleClickButtonMyAppointment = (event: any) => {
+    navigate("/my-appointment");
+  }
+
   return (
     <main className="main">
       <div className=''>
         <section className="wrapper">
           <div className="form">
-            <h1 className="text text-large">You are sick as fuck <br/><br/> Take appointment now 📆</h1>
+            <h1 className="text text-large text-left">You are sick as fuck<br/><br/>Take appointment now 📆</h1>
+            <br/><br/>
+            <span>
+              <a onClick={handleClickButtonMyAppointment} style={{cursor:'pointer'}} className="text text-links text-left">See my appointment</a>
+            </span>
           </div>
         </section>
       </div>

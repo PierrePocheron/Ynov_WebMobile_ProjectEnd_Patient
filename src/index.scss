@@ -39,10 +39,20 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.text-medium {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-black);
+}
+
 .text-large {
   font-size: 2rem;
   font-weight: 600;
   color: var(--color-black);
+}
+
+.text-left {
+  text-align: left;
 }
 
 code {
@@ -174,4 +184,17 @@ code {
           box-shadow: var(--shadow-medium);
   text-transform: capitalize;
   text-rendering: optimizeLegibility;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 10px 50px;
+  /*  grid-column-gap: 50px; -> column-gap  */
+  padding: 10px;
+}
+
+.grid-container > div {
+  padding: 20px 0;
+  font-size: 15px;
 }
