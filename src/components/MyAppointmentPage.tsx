@@ -19,7 +19,10 @@ const MyAppointmentPage = () => {
     }
 
     const fetchData = async () => {
-      const q = query(collection(db, 'appointment'), where('patient', '==', currentPatient?.uid));
+      const q = query(collection(db, 'appointments'),
+                where('patient', '==', currentPatient?.uid),
+                where('active', '==', true)
+                );
       const getProvider = await getDocs(q)
 
       let listAppointmentTemp:any[] = []
@@ -28,9 +31,7 @@ const MyAppointmentPage = () => {
       })
       setListAppointment(listAppointmentTemp)
     }
-
     fetchData();
-    console.log(listAppointment)
   }, [])
 
   const handleClickCancelAppointment = async (event:any, appointmentUid:string) => {

@@ -41,11 +41,11 @@ const TakeAppointmentPage = () => {
     if (currentPatient){
       const appointmentCreateDoc = await addDoc(collection(db, 'appointments'), {
         uid: uid(28),
+        active: true,
+        date: appointmentDate,
 
         patient: currentPatient.uid,
         provider: providerUid,
-
-        date: appointmentDate,
       })
       .catch((error) => {
         var errorMessage = error.message;
