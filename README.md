@@ -24,7 +24,7 @@ yarn dev
 
 Todo :
 - Chose type of prestation
-- Vibrer en error
+- Vibrate on error
 - Notification PUSH
 
 ## 🏛️ `Technology used`

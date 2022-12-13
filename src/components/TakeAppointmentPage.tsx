@@ -19,8 +19,6 @@ const TakeAppointmentPage = () => {
       navigate("/login")
     }
 
-    //const getProvider = collection("users").where("id", "==", match.params.id).get()
-    // Todo add where condition
     const fetchData = async () => {
       const q = query(collection(db, 'users'), where('type', '==', 'PROVIDER'));
       const getProvider = await getDocs(q)
@@ -41,7 +39,7 @@ const TakeAppointmentPage = () => {
     if (currentPatient){
       const appointmentCreateDoc = await addDoc(collection(db, 'appointments'), {
         uid: uid(28),
-        active: true,
+        status: 'WAITING_CONFIRMATION',
         date: appointmentDate,
 
         patient: currentPatient.uid,
@@ -87,8 +85,9 @@ const TakeAppointmentPage = () => {
           {listProvider?.map(provider =>
             <section className="wrapper" style={{margin: '7px'}}>
               <div className="form">
-              <h5><i>Provider 👨🏽‍⚕️</i></h5>
+                <h5><i>Provider 👨🏽‍⚕️</i></h5>
                 <h4><b>{provider.lastname}</b> {provider.firstname}</h4>
+
                 <div className="input-control">
                   <label htmlFor="appointmentDate" hidden>Appointment date</label>
                   <input

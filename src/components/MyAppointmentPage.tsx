@@ -20,19 +20,18 @@ const MyAppointmentPage = () => {
 
     const fetchData = async () => {
       const q = query(collection(db, 'appointments'),
-                where('patient', '==', currentPatient?.uid),
-                where('active', '==', true)
+                where('patient', '==', currentPatient?.uid)
                 );
-      const getProvider = await getDocs(q)
+      const getAppointments = await getDocs(q)
 
-      let listAppointmentTemp:any[] = []
-      getProvider.forEach((doc) => {
-        listAppointmentTemp.push({
+      let listAppointmentsTemp:any[] = []
+      getAppointments.forEach((doc) => {
+        listAppointmentsTemp.push({
           id: doc.id,
           data: doc.data(),
         })
       })
-      setListAppointment(listAppointmentTemp)
+      setListAppointment(listAppointmentsTemp)
     }
     fetchData();
   }, [])
@@ -42,7 +41,7 @@ const MyAppointmentPage = () => {
     const appointmentRef = doc(db, "appointments", appointmentId);
 
     const data = {
-      active: false
+      status: 'DELETED'
     };
 
     updateDoc(appointmentRef, data)
@@ -102,7 +101,7 @@ const MyAppointmentPage = () => {
               endDate: appointment.data.date,
               options: ['Apple', 'Google', 'iCal', 'Microsoft365', 'Outlook.com', 'Yahoo'],
               timeZone: "Europe/Berlin",
-              iCalFileName: "Reminder-Event",
+              iCalFileName: "Appointment-Event",
             });
           }}>
             <input type="submit" value="Add to calendar" className="input-warning" />
