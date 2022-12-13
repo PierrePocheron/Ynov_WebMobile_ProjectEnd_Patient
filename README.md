@@ -20,10 +20,12 @@ yarn dev
 - Form register
 - Setup rooter
 - Take appointment (display list of providers & choose date)
+- Cancel appointment
 
 Todo :
-- Add uid to appointment
-- Manage my appointements
+- Chose type of prestation
+- Vibrer en error
+- Notification PUSH
 
 ## 🏛️ `Technology used`
 - Web App
