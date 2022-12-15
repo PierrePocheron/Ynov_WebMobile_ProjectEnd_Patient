@@ -23,13 +23,12 @@ yarn dev
 - Cancel appointment
 
 Todo :
-- Add icons
 - Chose type of prestation
 - Vibrate on error
 - Notification PUSH
 
 ## 🏛️ `Technology used`
-- Web App
+- Web app
 - PWA
 - Vite
 - React
