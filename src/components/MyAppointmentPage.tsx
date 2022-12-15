@@ -19,22 +19,35 @@ const MyAppointmentPage = () => {
     }
 
     const fetchData = async () => {
-      const q = query(collection(db, 'appointments'),
+      const qAppointment = query(collection(db, 'appointments'),
                 where('patient', '==', currentPatient?.uid)
                 );
-      const getAppointments = await getDocs(q)
+      const getAppointments = await getDocs(qAppointment)
 
-      let listAppointmentsTemp:any[] = []
-      getAppointments.forEach((doc) => {
-        listAppointmentsTemp.push({
-          id: doc.id,
-          data: doc.data(),
+      const listAppointmentsTemp = await Promise.all(
+        getAppointments.docs.map( async (appointment) => {
+
+          var appointmentData = appointment.data()
+          console.log(appointmentData.patient)
+
+          const qProvider = query(collection(db, 'users'), where('uid', '==', appointmentData.provider));
+          const getProvider = await getDocs(qProvider)
+
+          var providerData = getProvider.docs.at(0)?.data()
+
+          return ({
+            id: appointment.id,
+            data: appointmentData,
+            provider: providerData,
+          })
         })
-      })
+      )
+      console.log(listAppointmentsTemp)
       setListAppointment(listAppointmentsTemp)
     }
     fetchData();
   }, [])
+
 
   const handleClickCancelAppointment = async (event:any, appointmentId:string) => {
 
@@ -83,13 +96,11 @@ const MyAppointmentPage = () => {
       {listAppointment?.map(appointment =>
         <div className="wrapper">
           <div className="form">
-          <h5 className="text text-medium"><i>Provider 👨🏽‍⚕️</i></h5>
-          <span className="text-left">
-            id : <i>{appointment.id}</i>
-            <br/>
-            Date : <i>{appointment.data.date}</i>
-            <br/>
-            With : {appointment.data.provider}
+          <span>
+            <h1>👨🏽‍⚕️</h1>
+            <b>Provider : </b>{appointment.provider.lastname} {appointment.provider.firstname}<br/>
+            <b>Date : </b><i>{appointment.data.date}</i><br/>
+            <b>Time : </b><i>{appointment.data.time}</i><br/>
             <br/><br/>
           </span>
 

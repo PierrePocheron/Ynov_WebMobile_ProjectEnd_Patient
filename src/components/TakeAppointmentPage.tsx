@@ -85,11 +85,11 @@ const TakeAppointmentPage = () => {
           {listProvider?.map(provider =>
             <section className="wrapper" style={{margin: '7px'}}>
               <div className="form">
-                <h5><i>Provider 👨🏽‍⚕️</i></h5>
-                <h4><b>{provider.lastname}</b> {provider.firstname}</h4>
+                <h1><i>👨🏽‍⚕️</i></h1>
+                <p><b>Provider : </b>{provider.lastname} {provider.firstname}</p>
 
                 <div className="input-control">
-                  <label htmlFor="appointmentDate" hidden>Appointment date</label>
+                  <label htmlFor="appointmentDate" hidden>Date</label>
                   <input
                   type="date"
                   id="appointmentDate"
