@@ -1,7 +1,7 @@
 # 🚀 ProjectEnd Patient
 
 ## 🏗️ `Getting started`
-Start Hack Contact application with autoReload enabled.
+Start application with autoReload enabled.
 ```
 npm run dev
 # or
@@ -21,6 +21,7 @@ yarn dev
 - Setup rooter
 - Take appointment (display list of providers & choose date)
 - Cancel appointment
+- Button to install PWA
 
 Todo :
 - Chose type of prestation
