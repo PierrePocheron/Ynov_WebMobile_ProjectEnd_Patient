@@ -1,7 +1,7 @@
 # 🚀 ProjectEnd Patient
 
 ## 🏗️ `Getting started`
-Start application with autoReload enabled.
+Start application with auto reload enabled.
 ```
 npm run dev
 # or

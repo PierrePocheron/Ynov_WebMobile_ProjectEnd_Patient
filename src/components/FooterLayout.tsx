@@ -16,6 +16,7 @@ const FooterLayout = () => {
           if (outcome === 'accepted') {
               deferredPrompt = null;
           }
+          // Todo catch if navigateur non compatible
       }
     });
   }, [])
