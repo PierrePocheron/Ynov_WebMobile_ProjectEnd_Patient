@@ -21,6 +21,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+          <Route path="" element={<LoginPage updateLogin={setIsLogin} />} />
           <Route path="/" element={<LoginPage updateLogin={setIsLogin} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage updateLogin={setIsLogin} />} />
