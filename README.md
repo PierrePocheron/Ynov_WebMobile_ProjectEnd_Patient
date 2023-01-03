@@ -22,6 +22,8 @@ yarn dev
 - Take appointment (display list of providers & choose date)
 - Cancel appointment
 - Button to install PWA
+- Splash Screen
+
 
 Todo :
 - Chose type of prestation
