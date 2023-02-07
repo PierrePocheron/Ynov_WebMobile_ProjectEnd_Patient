@@ -1,5 +1,7 @@
 # 🚀 ProjectEnd Patient
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9b77f493-3623-4ad6-ad74-c0f948353d55/deploy-status)](https://webmobile-projectend-patient.netlify.app)
+
 ## 🏗️ `Getting started`
 Start application with auto reload enabled.
 ```
